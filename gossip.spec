@@ -6,7 +6,7 @@
 #   due to lack of pl translations (Summary fields are created
 #   automagically)
 #
-%define cvs 20031001
+%define cvs 20031010
 #
 Summary:	Very easy to use GNOME Jabber client
 Summary(pl):	Bardzo prosty w u¿yciu klient Jabbera dla GNOME
@@ -16,7 +16,7 @@ Release:	0.%{cvs}.1
 License:	GPL
 Group:		Applications/Communications
 Source0:	gossip-cvs-%{cvs}.tar.gz
-# Source0-md5:	a86acf15fdb6ce137c1f4a7579d4dbca
+# Source0-md5:	68723307ae0ccb25f91db7fc84026463
 URL:		http://www.imendio.com/projects/gossip/
 BuildRequires:	gtk+2-devel >= 2.0.4
 BuildRequires:	intltool >= 0.23
