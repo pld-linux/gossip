@@ -6,19 +6,18 @@ Summary:	Very easy to use GNOME Jabber client
 Summary(pl):	Bardzo prosty w u¿yciu klient Jabbera dla GNOME
 Name:		gossip
 Version:	0.7.1
-Release:	0.1
+Release:	0.2
 License:	GPL
 Group:		Applications/Communications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gossip/0.7/%{name}-%{version}.tar.bz2
 # Source0-md5:	1cee1c49c59b236b1db80bc6304b49e3
 #Source0:	%{name}-%{version}-%{snap}.tar.gz
-Source1:	%{name}.png
-Patch0:		%{name}-desktop-icon.patch
+Patch0:		%{name}-schemas.patch
 URL:		http://gossip.imendio.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gnome-common
-BuildRequires:	gnutls-devel >= 0.9.95
+BuildRequires:	gnutls-devel >= 1.0.0
 BuildRequires:	gtk+2-devel >= 2.0.4
 BuildRequires:	intltool >= 0.23
 BuildRequires:	libglade2-devel >= 2.0.0
@@ -54,14 +53,11 @@ intltoolize --copy --force
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT/%{_pixmapsdir}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
 	GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
 	
-install -c %{SOURCE1} $RPM_BUILD_ROOT/%{_pixmapsdir}
-
 %find_lang %{name} --with-gnome --all-name
 
 %clean
