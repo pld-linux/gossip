@@ -24,6 +24,7 @@ BuildRequires:	libglade2-devel >= 2.0.0
 BuildRequires:	libgnomeui-devel >= 2.3.3.1-2
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel
+BuildRequires:	libxslt-devel
 BuildRequires:	loudmouth-devel >= 0.15.1
 Requires(post):	GConf2 >= 2.3.0
 Requires(post):	scrollkeeper
