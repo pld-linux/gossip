@@ -9,19 +9,22 @@
 Summary:	Very easy to use GNOME Jabber client
 Summary(pl):	Bardzo prosty w u¿yciu klient Jabbera dla GNOME
 Name:		gossip
-Version:	0.3
-Release:	0.2
+Version:	0.4
+Release:	1
 License:	GPL
 Group:		Applications/Communications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gossip/0.3/%{name}-%{version}.tar.bz2
-# Source0-md5:	771f1422241dcebccb666811908339b2
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gossip/0.4/%{name}-%{version}.tar.bz2
+# Source0-md5:	75ee69ebb036e0146323cbe03d66a591
 URL:		http://www.imendio.com/projects/gossip/
 BuildRequires:	gtk+2-devel >= 2.0.4
 BuildRequires:	libglade2-devel >= 2.0.0
 BuildRequires:	libgnomeui-devel
 BuildRequires:	libxml2-devel
-BuildRequires:	loudmouth-devel >= 0.10.1
+BuildRequires:	intltool >= 0.23
+BuildRequires:	loudmouth-devel >= 0.12
 BuildRequires:	openssl-devel
+Requires(post): GConf2 >= 2.3.0
+Requires(post): scrollkeeper
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -57,9 +60,17 @@ rm -rf $RPM_BUILD_ROOT
 %clean
 rm -rf $RPM_BUILD_ROOT
 
+%post
+%gconf_schema_install
+/usr/bin/scrollkeeper-update
+
+%postun
+/usr/bin/scrollkeeper-update
+
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog README
+%config %{_sysconfdir}/gconf/schemas/*
 %attr(755,root,root) %{_bindir}/*
 %{_datadir}/%{name}
 %{_desktopdir}/*.desktop
