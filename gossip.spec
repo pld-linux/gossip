@@ -22,7 +22,7 @@ BuildRequires:	libglade2-devel >= 2.0.0
 BuildRequires:	libgnomeui-devel >= 2.3.3.1-2
 BuildRequires:	libxml2-devel
 BuildRequires:	loudmouth-devel >= 0.12
-BuildRequires:	openssl-devel >= 0.9.7
+BuildRequires:	openssl-devel >= 0.9.7c
 BuildRequires:	gnome-common
 Requires(post):	GConf2 >= 2.3.0
 Requires(post):	scrollkeeper
