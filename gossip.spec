@@ -6,18 +6,15 @@
 #   due to lack of pl translations (Summary fields are created
 #   automagically)
 #
-%define cvs 20031106
-#
 Summary:	Very easy to use GNOME Jabber client
 Summary(pl):	Bardzo prosty w u¿yciu klient Jabbera dla GNOME
 Name:		gossip
 Version:	0.6
-Release:	0.%{cvs}.1
+Release:	1
 License:	GPL
 Group:		Applications/Communications
-# releases: http://ftp.gnome.org/pub/gnome/sources/gossip/
-Source0:	gossip-cvs-%{cvs}.tar.gz
-# Source0-md5:	f4d4ad880564c9231475cfc5f1996267
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gossip/0.6/%{name}-%{version}.tar.gz
+# Source0-md5:	1381f709b1b31fcd3409587ae63f0dbe
 URL:		http://www.imendio.com/projects/gossip/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -29,7 +26,7 @@ BuildRequires:	libglade2-devel >= 2.0.0
 BuildRequires:	libgnomeui-devel >= 2.3.3.1-2
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel
-BuildRequires:	loudmouth-devel >= 0.12
+BuildRequires:	loudmouth-devel >= 0.14.1
 Requires(post):	GConf2 >= 2.3.0
 Requires(post):	scrollkeeper
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -43,7 +40,7 @@ Celem Gossipa jest komunikowanie siê przy pomocy Jabbera najpro¶ciej
 jak to tylko mo¿liwe.
 
 %prep
-%setup -q -n gossip
+%setup -q
 
 %build
 glib-gettextize --copy --force
@@ -76,7 +73,7 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog README
-%config %{_sysconfdir}/gconf/schemas/*
+%{_sysconfdir}/gconf/schemas/*
 %attr(755,root,root) %{_bindir}/*
 %{_datadir}/%{name}
 %{_desktopdir}/*.desktop
