@@ -23,8 +23,8 @@ BuildRequires:	libgnomeui-devel >= 2.3.3.1-2
 BuildRequires:	libxml2-devel
 BuildRequires:	loudmouth-devel >= 0.12
 BuildRequires:	openssl-devel >= 0.9.7
-Requires(post): GConf2 >= 2.3.0
-Requires(post): scrollkeeper
+Requires(post):	GConf2 >= 2.3.0
+Requires(post):	scrollkeeper
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
