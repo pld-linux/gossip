@@ -12,6 +12,7 @@ Source0:	http://ftp.gnome.org/pub/GNOME/sources/gossip/0.7/%{name}-%{version}.ta
 # Source0-md5:	76f21e584fe8996ebd44cef2c6bf31c2
 Patch0:		%{name}-desktop.patch
 Patch1:		%{name}-locale_names.patch
+Patch2:		%{name}-dbus.patch
 URL:		http://gossip.imendio.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -42,6 +43,7 @@ jak to tylko mo¿liwe.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p0
 
 mv -f po/{no,nb}.po
 
