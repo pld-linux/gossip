@@ -1,20 +1,18 @@
 # TODO:
 # - maybe better descriptions
 #
-# NOTE:
-# - patching the desktop file make no sense for a moment,
-#   due to lack of pl translations (Summary fields are created
-#   automagically)
-#
+%define		snap 20031128
 Summary:	Very easy to use GNOME Jabber client
 Summary(pl):	Bardzo prosty w u¿yciu klient Jabbera dla GNOME
 Name:		gossip
 Version:	0.6
-Release:	2
+Release:	2.%{snap}.1
 License:	GPL
 Group:		Applications/Communications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gossip/0.6/%{name}-%{version}.tar.gz
-# Source0-md5:	1381f709b1b31fcd3409587ae63f0dbe
+#Source0:	http://ftp.gnome.org/pub/GNOME/sources/gossip/0.6/%{name}-%{version}.tar.gz
+Source0:	%{name}-%{version}-%{snap}.tar.gz
+# Source0-md5:	444b88855f8fee73638b64d411ab8740
+Source1:	%{name}.png
 Patch0:		%{name}-desktop-icon.patch
 URL:		http://gossip.imendio.org/
 BuildRequires:	autoconf
@@ -41,7 +39,7 @@ Celem Gossipa jest komunikowanie siê przy pomocy Jabbera najpro¶ciej
 jak to tylko mo¿liwe.
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{version}-%{snap}
 %patch0 -p1
 
 %build
@@ -56,13 +54,13 @@ intltoolize --copy --force
 
 %install
 rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT/%{_pixmapsdir}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
 	GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
 	
-install -d $RPM_BUILD_ROOT/%{_pixmapsdir}	
-install ui/pixmaps/gossip-available.png  $RPM_BUILD_ROOT/%{_pixmapsdir}/gossip.png
+install -c %{SOURCE1} $RPM_BUILD_ROOT/%{_pixmapsdir}
 
 %find_lang %{name} --with-gnome --all-name
 
