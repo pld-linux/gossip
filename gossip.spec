@@ -1,17 +1,13 @@
-# TODO:
-# - maybe better descriptions
-#
 Summary:	Very easy to use GNOME Jabber client
 Summary(pl):	Bardzo prosty w u¿yciu klient Jabbera dla GNOME
 Name:		gossip
-Version:	0.7.8
+Version:	0.8
 Release:	1
 License:	GPL
 Group:		Applications/Communications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gossip/0.7/%{name}-%{version}.tar.bz2
-# Source0-md5:	fa3e9cbad85f8030b25c08da2c6ae310
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gossip/0.8/%{name}-%{version}.tar.bz2
+# Source0-md5:	8bbe3dac8d0da7e0b936971a01545f14
 Patch0:		%{name}-desktop.patch
-Patch1:		%{name}-locale_names.patch
 URL:		http://gossip.imendio.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -42,9 +38,6 @@ jak to tylko mo¿liwe.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
-
-mv -f po/{no,nb}.po
 
 %build
 glib-gettextize --copy --force
@@ -64,6 +57,8 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT \
 	GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
 	
+rm -r $RPM_BUILD_ROOT%{_datadir}/locale/no	
+
 %find_lang %{name} --with-gnome --all-name
 
 %clean
