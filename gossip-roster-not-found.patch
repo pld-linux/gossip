@@ -1,0 +1,27 @@
+--- gossip-0.8/src/gossip-app.c.orig	2005-01-08 04:19:38.877406688 +0100
++++ gossip-0.8/src/gossip-app.c	2005-01-08 04:22:41.717610752 +0100
+@@ -1630,16 +1630,18 @@
+ 		if (str && strcmp (str, "") != 0) {
+ 			item = gossip_roster_find_item (gossip_app_get_roster (),
+ 							str);
+-			if (!item) {
++			if (item) {
++				contact = gossip_roster_get_contact_from_item (gossip_app_get_roster (),
++								item);
++				chat = gossip_private_chat_get_for_contact (contact, TRUE);
++				
++				gossip_chat_present (GOSSIP_CHAT (chat));
++			}
++			else {
+ 				/* FIXME: Display error dialog... */
+ 				g_warning ("'%s' is not a valid JID or nick name.", str);
+ 			}
+ 
+-			contact = gossip_roster_get_contact_from_item (gossip_app_get_roster (),
+-							       item);
+-			chat = gossip_private_chat_get_for_contact (contact, TRUE);
+-			
+-			gossip_chat_present (GOSSIP_CHAT (chat));
+ 		}
+ 	}
+ 
