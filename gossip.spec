@@ -15,17 +15,21 @@ Version:	0.6
 Release:	0.%{cvs}.1
 License:	GPL
 Group:		Applications/Communications
+# releases: http://ftp.gnome.org/pub/gnome/sources/gossip/
 Source0:	gossip-cvs-%{cvs}.tar.gz
 # Source0-md5:	f4d4ad880564c9231475cfc5f1996267
 URL:		http://www.imendio.com/projects/gossip/
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	gnome-common
+BuildRequires:	gnutls-devel >= 0.9.95
 BuildRequires:	gtk+2-devel >= 2.0.4
 BuildRequires:	intltool >= 0.23
 BuildRequires:	libglade2-devel >= 2.0.0
 BuildRequires:	libgnomeui-devel >= 2.3.3.1-2
+BuildRequires:	libtool
 BuildRequires:	libxml2-devel
 BuildRequires:	loudmouth-devel >= 0.12
-BuildRequires:	gnutls-devel >= 0.9.95
-BuildRequires:	gnome-common
 Requires(post):	GConf2 >= 2.3.0
 Requires(post):	scrollkeeper
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
