@@ -26,6 +26,7 @@ BuildRequires:	libtool
 BuildRequires:	libxml2-devel
 BuildRequires:	libxslt-devel
 BuildRequires:	loudmouth-devel >= 0.15.1
+BuildRequires:	dbus-glib-devel >= 0.22
 Requires(post):	GConf2 >= 2.3.0
 Requires(post):	scrollkeeper
 Requires:	dbus >= 0.22-3
