@@ -1,0 +1,12 @@
+diff -aurN gossip-0.7.5.orig/gossip.desktop.in gossip-0.7.5/gossip.desktop.in
+--- gossip-0.7.5.orig/gossip.desktop.in	2003-12-15 12:17:05.000000000 +0100
++++ gossip-0.7.5/gossip.desktop.in	2004-06-12 11:52:22.283880888 +0200
+@@ -8,7 +8,7 @@
+ StartupNotify=true
+ Terminal=false
+ Type=Application
+-Categories=Application;Network;
++Categories=Application;Network;InstantMessaging;
+ X-GNOME-Bugzilla-Bugzilla=GNOME
+ X-GNOME-Bugzilla-Product=gossip
+ X-GNOME-Bugzilla-Component=General
