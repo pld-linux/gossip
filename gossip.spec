@@ -5,13 +5,13 @@
 Summary:	Very easy to use GNOME Jabber client
 Summary(pl):	Bardzo prosty w u¿yciu klient Jabbera dla GNOME
 Name:		gossip
-Version:	0.6
-Release:	2.%{snap}.1
+Version:	0.7.1
+Release:	0.1
 License:	GPL
 Group:		Applications/Communications
-#Source0:	http://ftp.gnome.org/pub/GNOME/sources/gossip/0.6/%{name}-%{version}.tar.gz
-Source0:	%{name}-%{version}-%{snap}.tar.gz
-# Source0-md5:	444b88855f8fee73638b64d411ab8740
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gossip/0.7/%{name}-%{version}.tar.bz2
+# Source0-md5:	1cee1c49c59b236b1db80bc6304b49e3
+#Source0:	%{name}-%{version}-%{snap}.tar.gz
 Source1:	%{name}.png
 Patch0:		%{name}-desktop-icon.patch
 URL:		http://gossip.imendio.org/
@@ -25,7 +25,7 @@ BuildRequires:	libglade2-devel >= 2.0.0
 BuildRequires:	libgnomeui-devel >= 2.3.3.1-2
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel
-BuildRequires:	loudmouth-devel >= 0.14.1
+BuildRequires:	loudmouth-devel >= 0.15.1
 Requires(post):	GConf2 >= 2.3.0
 Requires(post):	scrollkeeper
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -39,7 +39,7 @@ Celem Gossipa jest komunikowanie siê przy pomocy Jabbera najpro¶ciej
 jak to tylko mo¿liwe.
 
 %prep
-%setup -q -n %{name}-%{version}-%{snap}
+%setup -q
 %patch0 -p1
 
 %build
