@@ -10,12 +10,13 @@ Summary:	Very easy to use GNOME Jabber client
 Summary(pl):	Bardzo prosty w u¿yciu klient Jabbera dla GNOME
 Name:		gossip
 Version:	0.6
-Release:	1.1
+Release:	2
 License:	GPL
 Group:		Applications/Communications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gossip/0.6/%{name}-%{version}.tar.gz
 # Source0-md5:	1381f709b1b31fcd3409587ae63f0dbe
-URL:		http://www.imendio.com/projects/gossip/
+Patch0:		%{name}-desktop-icon.patch
+URL:		http://gossip.imendio.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gnome-common
@@ -41,6 +42,7 @@ jak to tylko mo¿liwe.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 glib-gettextize --copy --force
@@ -58,6 +60,9 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
 	GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
+	
+install -d $RPM_BUILD_ROOT/%{_pixmapsdir}	
+install ui/pixmaps/gossip-available.png  $RPM_BUILD_ROOT/%{_pixmapsdir}/gossip.png
 
 %find_lang %{name} --with-gnome --all-name
 
@@ -77,3 +82,4 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/*
 %{_datadir}/%{name}
 %{_desktopdir}/*.desktop
+%{_pixmapsdir}/gossip.png
