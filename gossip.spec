@@ -1,15 +1,23 @@
-Summary:	A program that reminds you to take wrist breaks
+# TODO:
+# - maybe better descriptions
+#
+# NOTE:
+# - patching the desktop file make no sense for a moment,
+#   due to lack of pl translations (Summary fields are created
+#   automagically)
+#
+Summary:	Very easy to use GNOME Jabber client
+Summary(pl):	Bardzo prosty w u¿yciu klient Jabbera dla GNOME
 Name:		gossip
 Version:	0.3
-Release:	0.1
+Release:	0.2
 License:	GPL
 Group:		Applications/Communications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gossip/0.3/%{name}-%{version}.tar.bz2
 # Source0-md5:	771f1422241dcebccb666811908339b2
 URL:		http://www.imendio.com/projects/gossip 
-BuildRequires:	desktop-file-utils
-BuildRequires:	gtk+2-devel
-BuildRequires:	libglade2-devel
+BuildRequires:	gtk+2-devel >= 2.0.4
+BuildRequires:	libglade2-devel >= 2.0.0
 BuildRequires:	libgnomeui-devel
 BuildRequires:	libxml2-devel
 BuildRequires:	loudmouth-devel >= 0.10.1
@@ -17,7 +25,12 @@ BuildRequires:	openssl-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-Gossip is a Jabber instant messaging program.
+Gossip aims at making Instant Messaging with Jabber as easy as
+possible.
+
+%description -l pl
+Celem Gossipa jest komunikowanie siê przy pomocy Jabbera najpro¶ciej
+jak to tylko mo¿liwe.
 
 %prep
 %setup -q
@@ -38,10 +51,6 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
         DESTDIR=$RPM_BUILD_ROOT \
         GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
-
-desktop-file-install --vendor gnome --delete-original \
-	--dir $RPM_BUILD_ROOT%{_desktopdir} \
-	$RPM_BUILD_ROOT%{_desktopdir}/*
 
 %find_lang %{name} --with-gnome --all-name
 
