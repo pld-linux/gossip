@@ -5,7 +5,7 @@
  Terminal=false
  Type=Application
 -Categories=Application;Network;InstantMessaging;
-+Categories=GTK;GNOME;Application;Network;InstantMessaging;
++Categories=GTK;GNOME;Network;InstantMessaging;
  X-GNOME-Bugzilla-Bugzilla=GNOME
  X-GNOME-Bugzilla-Product=gossip
  X-GNOME-Bugzilla-Component=General
