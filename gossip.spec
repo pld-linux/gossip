@@ -15,7 +15,7 @@ License:	GPL
 Group:		Applications/Communications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gossip/0.3/%{name}-%{version}.tar.bz2
 # Source0-md5:	771f1422241dcebccb666811908339b2
-URL:		http://www.imendio.com/projects/gossip 
+URL:		http://www.imendio.com/projects/gossip/
 BuildRequires:	gtk+2-devel >= 2.0.4
 BuildRequires:	libglade2-devel >= 2.0.0
 BuildRequires:	libgnomeui-devel
