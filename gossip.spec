@@ -10,7 +10,6 @@ License:	GPL
 Group:		Applications/Communications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gossip/0.7/%{name}-%{version}.tar.bz2
 # Source0-md5:	76f21e584fe8996ebd44cef2c6bf31c2
-Patch0:		%{name}-desktop.patch
 URL:		http://gossip.imendio.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -38,7 +37,6 @@ jak to tylko mo¿liwe.
 
 %prep
 %setup -q
-#%patch0 -p1
 
 %build
 glib-gettextize --copy --force
