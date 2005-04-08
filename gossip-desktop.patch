@@ -1,5 +1,5 @@
---- gossip-0.7.6/gossip.desktop.in~	Fri Jul 23 07:02:17 2004
-+++ gossip-0.7.6/gossip.desktop.in	Fri Jul 23 07:02:17 2004
+--- gossip-0.7.6/gossip.desktop.in.in~	Fri Jul 23 07:02:17 2004
++++ gossip-0.7.6/gossip.desktop.in.in	Fri Jul 23 07:02:17 2004
 @@ -8,7 +8,7 @@
  StartupNotify=true
  Terminal=false
