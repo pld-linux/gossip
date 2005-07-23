@@ -1,4 +1,4 @@
-%define		_snap	20050413
+%define		_snap	20050723
 Summary:	Very easy to use GNOME Jabber client
 Summary(pl):	Bardzo prosty w u¿yciu klient Jabbera dla GNOME
 Name:		gossip
@@ -22,11 +22,9 @@ BuildRequires:	libgnomeui-devel >= 2.3.3.1-2
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 1:2.6.19
 BuildRequires:	loudmouth-devel >= 0.17
-BuildRequires:	dbus-glib-devel >= 0.22
 BuildRequires:  rpmbuild(macros) >= 1.197
 Requires(post,preun):   GConf2
 Requires(post,postun):  scrollkeeper
-Requires:	dbus >= 0.22-3
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -49,8 +47,7 @@ jak to tylko mo¿liwe.
 %{__autoheader}
 %{__automake}
 %{__autoconf}
-%configure \
-	--enable-dbus
+%configure
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -81,6 +78,8 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS CONTRIBUTORS ChangeLog NEWS README TODO
 %attr(755,root,root) %{_bindir}/*
 %{_datadir}/%{name}
+%{_datadir}/sounds/gossip
 %{_desktopdir}/*.desktop
 %{_pixmapsdir}/gossip.png
 %{_sysconfdir}/gconf/schemas/*
+%{_sysconfdir}/sound/events/*
