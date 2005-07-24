@@ -7,7 +7,7 @@ Release:	0.%{_snap}.1
 License:	GPL
 Group:		Applications/Communications
 Source0:	%{name}-%{version}-%{_snap}.tar.bz2
-# Source0-md5:	f3e24e18bb83c2f0b3338fc35b50a1f0
+# Source0-md5:	a97be3211bfdc02a55323e227a3b2ea8
 #Source0:	http://ftp.gnome.org/pub/GNOME/sources/gossip/0.8/%{name}-%{version}.tar.bz2
 Patch0:		%{name}-desktop.patch
 URL:		http://gossip.imendio.org/
