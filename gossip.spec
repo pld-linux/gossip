@@ -5,8 +5,6 @@ Version:	0.9
 Release:	1
 License:	GPL
 Group:		Applications/Communications
-Source0:	%{name}-%{version}-%{_snap}.tar.bz2
-# Source0-md5:	af017e1652a96009d30eeeead2dd4ef9
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gossip/0.9/%{name}-%{version}.tar.bz2
 # Source0-md5:	af017e1652a96009d30eeeead2dd4ef9
 Patch0:		%{name}-desktop.patch
@@ -21,10 +19,11 @@ BuildRequires:	libglade2-devel >= 2.0.0
 BuildRequires:	libgnomeui-devel >= 2.3.3.1-2
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 1:2.6.19
-BuildRequires:	loudmouth-devel >= 0.17
+BuildRequires:	loudmouth-devel >= 1.0
 BuildRequires:  rpmbuild(macros) >= 1.197
 Requires(post,preun):   GConf2
 Requires(post,postun):  scrollkeeper
+Requires:	loudmouth >= 1.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -81,5 +80,5 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/sounds/gossip
 %{_desktopdir}/*.desktop
 %{_pixmapsdir}/gossip.png
-%{_sysconfdir}/gconf/schemas/*
+%{_sysconfdir}/gconf/schemas/gossip.schemas
 %{_sysconfdir}/sound/events/*
