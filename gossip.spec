@@ -1,31 +1,30 @@
 Summary:	Very easy to use GNOME Jabber client
 Summary(pl):	Bardzo prosty w u¿yciu klient Jabbera dla GNOME
 Name:		gossip
-Version:	0.8
-Release:	3
+Version:	0.9
+Release:	1
 License:	GPL
 Group:		Applications/Communications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gossip/0.8/%{name}-%{version}.tar.bz2
-# Source0-md5:	8bbe3dac8d0da7e0b936971a01545f14
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gossip/0.9/%{name}-%{version}.tar.bz2
+# Source0-md5:	af017e1652a96009d30eeeead2dd4ef9
 Patch0:		%{name}-desktop.patch
-Patch1:		%{name}-roster-not-found.patch
 URL:		http://gossip.imendio.org/
+BuildRequires:	aspell-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gnome-common >= 2.8.0
 BuildRequires:	gnutls-devel >= 1.2.5
-BuildRequires:	gtk+2-devel >= 1:2.0.4
+BuildRequires:	gtk+2-devel >= 1:2.6.0
 BuildRequires:	intltool >= 0.23
 BuildRequires:	libglade2-devel >= 2.0.0
 BuildRequires:	libgnomeui-devel >= 2.3.3.1-2
 BuildRequires:	libtool
-BuildRequires:	libxml2-devel
-BuildRequires:	libxslt-devel
-BuildRequires:	loudmouth-devel >= 0.17
-BuildRequires:	dbus-glib-devel >= 0.22
-Requires(post):	GConf2 >= 2.3.0
-Requires(post):	scrollkeeper
-Requires:	dbus >= 0.22-3
+BuildRequires:	libxml2-devel >= 1:2.6.19
+BuildRequires:	loudmouth-devel >= 1.0
+BuildRequires:  rpmbuild(macros) >= 1.197
+Requires(post,preun):   GConf2
+Requires(post,postun):  scrollkeeper
+Requires:	loudmouth >= 1.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -39,18 +38,16 @@ jak to tylko mo¿liwe.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 
 %build
-glib-gettextize --copy --force
+%{__glib_gettextize}
 %{__libtoolize}
-intltoolize --copy --force
+%{__intltoolize}
 %{__aclocal}
 %{__autoheader}
 %{__automake}
 %{__autoconf}
-%configure \
-	--enable-dbus
+%configure
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -67,16 +64,22 @@ rm -r $RPM_BUILD_ROOT%{_datadir}/locale/no
 rm -rf $RPM_BUILD_ROOT
 
 %post
-%gconf_schema_install
-/usr/bin/scrollkeeper-update
+%gconf_schema_install gossip.schemas
+%scrollkeeper_update_post
 
-%postun -p /usr/bin/scrollkeeper-update
+%preun
+%gconf_schema_uninstall gossip.schemas
+
+%postun
+%scrollkeeper_update_postun
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog README
-%{_sysconfdir}/gconf/schemas/*
+%doc AUTHORS CONTRIBUTORS ChangeLog NEWS README TODO
 %attr(755,root,root) %{_bindir}/*
 %{_datadir}/%{name}
+%{_datadir}/sounds/gossip
 %{_desktopdir}/*.desktop
 %{_pixmapsdir}/gossip.png
+%{_sysconfdir}/gconf/schemas/gossip.schemas
+%{_sysconfdir}/sound/events/*
