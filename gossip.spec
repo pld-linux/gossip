@@ -9,6 +9,7 @@ Source0:	http://ftp.gnome.org/pub/GNOME/sources/gossip/0.9/%{name}-%{version}.ta
 # Source0-md5:	af017e1652a96009d30eeeead2dd4ef9
 Patch0:		%{name}-desktop.patch
 URL:		http://gossip.imendio.org/
+BuildRequires:	aspell-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gnome-common >= 2.8.0
