@@ -22,6 +22,7 @@ BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 1:2.6.19
 BuildRequires:	loudmouth-devel >= 1.0
 BuildRequires:  rpmbuild(macros) >= 1.197
+BuildRequires:  xorg-lib-libXScrnSaver-devel
 Requires(post,preun):   GConf2
 Requires(post,postun):  scrollkeeper
 Requires:	loudmouth >= 1.0
@@ -81,5 +82,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/sounds/gossip
 %{_desktopdir}/*.desktop
 %{_pixmapsdir}/gossip.png
+%{_omf_dest_dir}/%{name}
 %{_sysconfdir}/gconf/schemas/gossip.schemas
 %{_sysconfdir}/sound/events/*
