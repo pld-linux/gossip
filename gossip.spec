@@ -1,12 +1,12 @@
 Summary:	Very easy to use GNOME Jabber client
 Summary(pl):	Bardzo prosty w u¿yciu klient Jabbera dla GNOME
 Name:		gossip
-Version:	0.9
-Release:	2
+Version:	0.10
+Release:	0.1
 License:	GPL
 Group:		Applications/Communications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gossip/0.9/%{name}-%{version}.tar.bz2
-# Source0-md5:	af017e1652a96009d30eeeead2dd4ef9
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gossip/0.10/%{name}-%{version}.tar.bz2
+# Source0-md5:	57a3a1a84ca4451868df2f151bae50aa
 Patch0:		%{name}-desktop.patch
 URL:		http://gossip.imendio.org/
 BuildRequires:	aspell-devel
