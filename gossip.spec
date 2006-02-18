@@ -21,10 +21,10 @@ BuildRequires:	libgnomeui-devel >= 2.3.3.1-2
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 1:2.6.19
 BuildRequires:	loudmouth-devel >= 1.0
-BuildRequires:  rpmbuild(macros) >= 1.197
-BuildRequires:  xorg-lib-libXScrnSaver-devel
-Requires(post,preun):   GConf2
-Requires(post,postun):  scrollkeeper
+BuildRequires:	rpmbuild(macros) >= 1.197
+BuildRequires:	xorg-lib-libXScrnSaver-devel
+Requires(post,preun):	GConf2
+Requires(post,postun):	scrollkeeper
 Requires:	loudmouth >= 1.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
