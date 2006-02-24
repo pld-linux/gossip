@@ -12,10 +12,13 @@ URL:		http://gossip.imendio.org/
 BuildRequires:	aspell-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
+BuildRequires:	avahi-glib-devel
+BuildRequires:	dbus-glib-devel
 BuildRequires:	gnome-common >= 2.8.0
 BuildRequires:	gnutls-devel >= 1.2.5
 BuildRequires:	gtk+2-devel >= 1:2.6.0
 BuildRequires:	intltool >= 0.23
+BuildRequires:	libgalago-devel
 BuildRequires:	libglade2-devel >= 2.0.0
 BuildRequires:	libgnomeui-devel >= 2.3.3.1-2
 BuildRequires:	libtool
@@ -48,7 +51,9 @@ jak to tylko mo¿liwe.
 %{__autoheader}
 %{__automake}
 %{__autoconf}
-%configure
+%configure \
+	--enable-dbus \
+	--with-galago
 
 %install
 rm -rf $RPM_BUILD_ROOT
