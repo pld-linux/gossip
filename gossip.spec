@@ -27,8 +27,8 @@ BuildRequires:	libxml2-devel >= 1:2.6.19
 BuildRequires:	loudmouth-devel >= 1.0
 BuildRequires:	rpmbuild(macros) >= 1.197
 BuildRequires:	xorg-lib-libXScrnSaver-devel
-Requires(post,preun):	GConf2
 Requires(post,postun):	scrollkeeper
+Requires(post,preun):	GConf2
 Requires:	loudmouth >= 1.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -63,8 +63,8 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
 	GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
-	
-rm -r $RPM_BUILD_ROOT%{_datadir}/locale/no	
+
+rm -r $RPM_BUILD_ROOT%{_datadir}/locale/no
 
 %find_lang %{name} --with-gnome --all-name
 
