@@ -1,12 +1,12 @@
 Summary:	Very easy to use GNOME Jabber client
 Summary(pl):	Bardzo prosty w u¿yciu klient Jabbera dla GNOME
 Name:		gossip
-Version:	0.10.1
+Version:	0.10.2
 Release:	1
 License:	GPL
 Group:		Applications/Communications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gossip/0.10/%{name}-%{version}.tar.bz2
-# Source0-md5:	2cf3be244b3983da193ef0ef35302782
+# Source0-md5:	f53dbf1fa951c620dbf4b95560e51c8c
 Patch0:		%{name}-desktop.patch
 URL:		http://gossip.imendio.org/
 BuildRequires:	aspell-devel
@@ -20,8 +20,7 @@ BuildRequires:	intltool >= 0.23
 BuildRequires:	libgalago-devel
 BuildRequires:	libglade2-devel >= 2.0.0
 BuildRequires:	libgnomeui-devel >= 2.3.3.1-2
-# requires libnotify < 0.3.x
-#BuildRequires:	libnotify-devel
+BuildRequires:	libnotify-devel
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 1:2.6.19
 BuildRequires:	loudmouth-devel >= 1.0
@@ -53,15 +52,17 @@ jak to tylko mo¿liwe.
 %{__automake}
 %{__autoconf}
 %configure \
-	--disable-libnotify \
+	--enable-libnotify \
 	--enable-dbus \
 	--with-galago
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
+	_ENABLE_SK=false \
 	GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
 
 rm -r $RPM_BUILD_ROOT%{_datadir}/locale/no
