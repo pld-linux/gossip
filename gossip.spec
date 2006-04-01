@@ -14,13 +14,14 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	dbus-glib-devel
 BuildRequires:	gnome-common >= 2.8.0
+BuildRequires:	gnome-doc-utils
 BuildRequires:	gnutls-devel >= 1.2.5
 BuildRequires:	gtk+2-devel >= 2:2.8.0
 BuildRequires:	intltool >= 0.23
 BuildRequires:	libgalago-devel
 BuildRequires:	libglade2-devel >= 2.0.0
 BuildRequires:	libgnomeui-devel >= 2.3.3.1-2
-BuildRequires:	libnotify-devel
+BuildRequires:	libnotify-devel >= 0.3.0
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 1:2.6.19
 BuildRequires:	loudmouth-devel >= 1.0
