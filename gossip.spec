@@ -30,6 +30,7 @@ BuildRequires:	xorg-lib-libXScrnSaver-devel
 Requires(post,postun):	scrollkeeper
 Requires(post,preun):	GConf2
 Requires:	loudmouth >= 1.0
+Obsoletes:	gnome-jabber
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
