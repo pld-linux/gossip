@@ -1,12 +1,12 @@
 Summary:	Very easy to use GNOME Jabber client
 Summary(pl):	Bardzo prosty w u¿yciu klient Jabbera dla GNOME
 Name:		gossip
-Version:	0.10.2
+Version:	0.11
 Release:	1
 License:	GPL
 Group:		Applications/Communications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gossip/0.10/%{name}-%{version}.tar.bz2
-# Source0-md5:	f53dbf1fa951c620dbf4b95560e51c8c
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gossip/0.11/%{name}-%{version}.tar.bz2
+# Source0-md5:	4b2720f96df77e9c35f5eb7abbb10dab
 Patch0:		%{name}-desktop.patch
 URL:		http://gossip.imendio.org/
 BuildRequires:	aspell-devel
@@ -18,10 +18,11 @@ BuildRequires:	gnome-doc-utils
 BuildRequires:	gnutls-devel >= 1.2.5
 BuildRequires:	gtk+2-devel >= 2:2.8.0
 BuildRequires:	intltool >= 0.23
+BuildRequires:	iso-codes
 BuildRequires:	libgalago-devel
 BuildRequires:	libglade2-devel >= 2.0.0
 BuildRequires:	libgnomeui-devel >= 2.3.3.1-2
-BuildRequires:	libnotify-devel >= 0.3.0
+BuildRequires:	libnotify-devel >= 0.3.2
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 1:2.6.19
 BuildRequires:	loudmouth-devel >= 1.0
@@ -29,6 +30,7 @@ BuildRequires:	rpmbuild(macros) >= 1.197
 BuildRequires:	xorg-lib-libXScrnSaver-devel
 Requires(post,postun):	scrollkeeper
 Requires(post,preun):	GConf2
+Requires:	hicolor-icon-theme
 Requires:	loudmouth >= 1.0
 Obsoletes:	gnome-jabber
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -54,6 +56,8 @@ jak to tylko mo¿liwe.
 %{__automake}
 %{__autoconf}
 %configure \
+	--disable-schemas-install \
+	--disable-scrollkeeper \
 	--enable-libnotify \
 	--enable-dbus \
 	--with-galago
@@ -64,10 +68,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
-	_ENABLE_SK=false \
 	GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
-
-rm -r $RPM_BUILD_ROOT%{_datadir}/locale/no
 
 %find_lang %{name} --with-gnome --all-name
 
@@ -91,7 +92,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}
 %{_datadir}/sounds/gossip
 %{_desktopdir}/*.desktop
-%{_pixmapsdir}/gossip.png
+%{_iconsdir}/hicolor/*/apps/*
 %{_omf_dest_dir}/%{name}
 %{_sysconfdir}/gconf/schemas/gossip.schemas
 %{_sysconfdir}/sound/events/*
