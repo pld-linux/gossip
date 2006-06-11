@@ -28,7 +28,7 @@ BuildRequires:	libxml2-devel >= 1:2.6.26
 BuildRequires:	loudmouth-devel >= 1.0.3
 BuildRequires:	rpmbuild(macros) >= 1.197
 BuildRequires:	xorg-lib-libXScrnSaver-devel
-Requires(post,postun):	gtk+2 >= 2:2.9.2
+Requires(post,postun):	gtk+2 >= 2:2.8.2
 Requires(post,postun):	scrollkeeper
 Requires(post,preun):	GConf2 >= 2.14.0
 Requires:	hicolor-icon-theme
