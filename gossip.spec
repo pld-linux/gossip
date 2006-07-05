@@ -1,12 +1,12 @@
 Summary:	Very easy to use GNOME Jabber client
 Summary(pl):	Bardzo prosty w u¿yciu klient Jabbera dla GNOME
 Name:		gossip
-Version:	0.11.2
+Version:	0.12
 Release:	1
 License:	GPL
 Group:		Applications/Communications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gossip/0.11/%{name}-%{version}.tar.bz2
-# Source0-md5:	f67bbeac01b48b1f140c93ea64045e65
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gossip/0.12/%{name}-%{version}.tar.bz2
+# Source0-md5:	8ab6249e719cff70ea61cbe83171f78b
 Patch0:		%{name}-desktop.patch
 URL:		http://gossip.imendio.org/
 BuildRequires:	aspell-devel
@@ -16,23 +16,23 @@ BuildRequires:	dbus-glib-devel
 BuildRequires:	gnome-common >= 2.12.0
 BuildRequires:	gnome-doc-utils
 BuildRequires:	gnutls-devel >= 1.2.5
-BuildRequires:	gtk+2-devel >= 2:2.9.2
+BuildRequires:	gtk+2-devel >= 2:2.10.0
 BuildRequires:	intltool >= 0.35
 BuildRequires:	iso-codes
-BuildRequires:	libgalago-devel
+BuildRequires:	libgalago-devel >= 0.5.1
 BuildRequires:	libglade2-devel >= 1:2.5.1
 BuildRequires:	libgnomeui-devel >= 2.15.1
-BuildRequires:	libnotify-devel >= 0.4.0
+BuildRequires:	libnotify-devel >= 0.4.2
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 1:2.6.26
 BuildRequires:	loudmouth-devel >= 1.0.3
 BuildRequires:	rpmbuild(macros) >= 1.197
 BuildRequires:	xorg-lib-libXScrnSaver-devel
-Requires(post,postun):	gtk+2 >= 2:2.9.2
+Requires(post,postun):	gtk+2 >= 2:2.10.0
 Requires(post,postun):	scrollkeeper
 Requires(post,preun):	GConf2 >= 2.14.0
 Requires:	hicolor-icon-theme
-Requires:	loudmouth >= 1.0.3
+Requires:	loudmouth >= 1.0.4
 Obsoletes:	gnome-jabber
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -59,9 +59,10 @@ jak to tylko mo¿liwe.
 %configure \
 	--disable-schemas-install \
 	--disable-scrollkeeper \
-	--enable-libnotify \
+	--enable-aspell \
 	--enable-dbus \
-	--with-galago
+	--enable-galago \
+	--enable-libnotify
 %{__make}
 
 %install
@@ -92,6 +93,8 @@ gtk-update-icon-cache -qf %{_datadir}/icons/hicolor
 %defattr(644,root,root,755)
 %doc AUTHORS CONTRIBUTORS ChangeLog NEWS README TODO
 %attr(755,root,root) %{_bindir}/*
+%attr(755,root,root) %{_libdir}/*-applet
+%{_libdir}/bonobo/servers/*
 %{_datadir}/%{name}
 %{_datadir}/sounds/gossip
 %{_desktopdir}/*.desktop
