@@ -1,12 +1,12 @@
 Summary:	Very easy to use GNOME Jabber client
 Summary(pl):	Bardzo prosty w u¿yciu klient Jabbera dla GNOME
 Name:		gossip
-Version:	0.19
+Version:	0.20
 Release:	1
 License:	GPL
 Group:		Applications/Communications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gossip/%{version}/%{name}-%{version}.tar.bz2
-# Source0-md5:	49c60c4467d17948f7243a169c65775c
+# Source0-md5:	a8c6eb8cf31f28144283943db4b9f960
 Patch0:		%{name}-desktop.patch
 URL:		http://gossip.imendio.org/
 BuildRequires:	aspell-devel
@@ -15,23 +15,24 @@ BuildRequires:	automake
 BuildRequires:	dbus-glib-devel
 BuildRequires:	gnome-common >= 2.12.0
 BuildRequires:	gnome-doc-utils
+BuildRequires:	gnome-panel-devel >= 2.16.2
 BuildRequires:	gnutls-devel >= 1.2.5
-BuildRequires:	gtk+2-devel >= 2:2.10.1
-BuildRequires:	intltool >= 0.35
+BuildRequires:	gtk+2-devel >= 2:2.10.6
+BuildRequires:	intltool >= 0.35.0
 BuildRequires:	iso-codes
 BuildRequires:	libgalago-devel >= 0.5.1
 BuildRequires:	libglade2-devel >= 1:2.6.0
-BuildRequires:	libgnomeui-devel >= 2.15.90
+BuildRequires:	libgnomeui-devel >= 2.16.1
 BuildRequires:	libnotify-devel >= 0.4.2
 BuildRequires:	libtool
-BuildRequires:	libxml2-devel >= 1:2.6.26
+BuildRequires:	libxml2-devel >= 1:2.6.27
 BuildRequires:	loudmouth-devel >= 1.0.4
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	xorg-lib-libXScrnSaver-devel
-Requires(post,postun):	gtk+2 >= 2:2.10.1
+Requires(post,preun):	GConf2 >= 2.16.0
+Requires(post,postun):	gtk+2 >= 2:2.10.6
+Requires(post,postun):	hicolor-icon-theme
 Requires(post,postun):	scrollkeeper
-Requires(post,preun):	GConf2 >= 2.14.0
-Requires:	hicolor-icon-theme
 Requires:	loudmouth >= 1.0.4
 Obsoletes:	gnome-jabber
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
