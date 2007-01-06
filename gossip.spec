@@ -1,12 +1,12 @@
 Summary:	Very easy to use GNOME Jabber client
 Summary(pl):	Bardzo prosty w u¿yciu klient Jabbera dla GNOME
 Name:		gossip
-Version:	0.20
+Version:	0.21
 Release:	1
 License:	GPL
 Group:		Applications/Communications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gossip/%{version}/%{name}-%{version}.tar.bz2
-# Source0-md5:	a8c6eb8cf31f28144283943db4b9f960
+# Source0-md5:	2778e7c2017828863d1c7d2c6df5184a
 Patch0:		%{name}-desktop.patch
 URL:		http://gossip.imendio.org/
 BuildRequires:	aspell-devel
@@ -17,7 +17,7 @@ BuildRequires:	gnome-common >= 2.12.0
 BuildRequires:	gnome-doc-utils
 BuildRequires:	gnome-panel-devel >= 2.16.2
 BuildRequires:	gnutls-devel >= 1.2.5
-BuildRequires:	gtk+2-devel >= 2:2.10.6
+BuildRequires:	gtk+2-devel >= 2:2.10.7
 BuildRequires:	intltool >= 0.35.0
 BuildRequires:	iso-codes
 BuildRequires:	libgalago-devel >= 0.5.1
@@ -30,7 +30,7 @@ BuildRequires:	loudmouth-devel >= 1.0.4
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	xorg-lib-libXScrnSaver-devel
 Requires(post,preun):	GConf2 >= 2.16.0
-Requires(post,postun):	gtk+2 >= 2:2.10.6
+Requires(post,postun):	gtk+2 >= 2:2.10.7
 Requires(post,postun):	hicolor-icon-theme
 Requires(post,postun):	scrollkeeper
 Requires:	loudmouth >= 1.0.4
@@ -92,7 +92,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS CONTRIBUTORS ChangeLog NEWS README TODO
+%doc AUTHORS CONTRIBUTORS ChangeLog NEWS README
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_libdir}/*-applet
 %{_libdir}/bonobo/servers/*
