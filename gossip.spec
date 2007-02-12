@@ -1,5 +1,5 @@
 Summary:	Very easy to use GNOME Jabber client
-Summary(pl):	Bardzo prosty w uøyciu klient Jabbera dla GNOME
+Summary(pl.UTF-8):   Bardzo prosty w u≈ºyciu klient Jabbera dla GNOME
 Name:		gossip
 Version:	0.22
 Release:	1
@@ -41,9 +41,9 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Gossip aims at making Instant Messaging with Jabber as easy as
 possible.
 
-%description -l pl
-Celem Gossipa jest komunikowanie siÍ przy pomocy Jabbera najpro∂ciej
-jak to tylko moøliwe.
+%description -l pl.UTF-8
+Celem Gossipa jest komunikowanie siƒô przy pomocy Jabbera najpro≈õciej
+jak to tylko mo≈ºliwe.
 
 %prep
 %setup -q
