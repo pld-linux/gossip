@@ -1,5 +1,5 @@
 Summary:	Very easy to use GNOME Jabber client
-Summary(pl.UTF-8):   Bardzo prosty w użyciu klient Jabbera dla GNOME
+Summary(pl.UTF-8):	Bardzo prosty w użyciu klient Jabbera dla GNOME
 Name:		gossip
 Version:	0.22
 Release:	1
