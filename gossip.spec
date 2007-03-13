@@ -33,6 +33,7 @@ Requires(post,preun):	GConf2 >= 2.16.0
 Requires(post,postun):	gtk+2 >= 2:2.10.7
 Requires(post,postun):	hicolor-icon-theme
 Requires(post,postun):	scrollkeeper
+Requires:	iso-codes
 Requires:	loudmouth >= 1.0.4
 Obsoletes:	gnome-jabber
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
