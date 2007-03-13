@@ -31,6 +31,7 @@ BuildRequires:	X11-devel
 Requires(post,postun):	scrollkeeper
 Requires(post,preun):	GConf2
 Requires:	hicolor-icon-theme
+Requires:	iso-codes
 Requires:	loudmouth >= 1.0
 Obsoletes:	gnome-jabber
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
