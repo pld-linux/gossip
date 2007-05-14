@@ -1,12 +1,15 @@
+#
+%bcond_with	telepathy # Build with libtelepathy
+#
 Summary:	Very easy to use GNOME Jabber client
 Summary(pl.UTF-8):	Bardzo prosty w użyciu klient Jabbera dla GNOME
 Name:		gossip
-Version:	0.22
-Release:	2
+Version:	0.24
+Release:	1
 License:	GPL
 Group:		Applications/Communications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gossip/%{version}/%{name}-%{version}.tar.bz2
-# Source0-md5:	1238fcf0f68bb26d1f7c5fb1a40880f1
+# Source0-md5:	79a91572906bdcbfe96208e8e06aacf7
 Patch0:		%{name}-desktop.patch
 URL:		http://gossip.imendio.org/
 BuildRequires:	aspell-devel
@@ -20,13 +23,14 @@ BuildRequires:	gnutls-devel >= 1.2.5
 BuildRequires:	gtk+2-devel >= 2:2.10.7
 BuildRequires:	intltool >= 0.35.0
 BuildRequires:	iso-codes
-BuildRequires:	libgalago-devel >= 0.5.1
+%{!?with_telepathy:BuildRequires:	libgalago-devel >= 0.5.1}
 BuildRequires:	libglade2-devel >= 1:2.6.0
 BuildRequires:	libgnomeui-devel >= 2.16.1
 BuildRequires:	libnotify-devel >= 0.4.2
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 1:2.6.27
-BuildRequires:	loudmouth-devel >= 1.0.4
+%{?!with_telepathy:BuildRequires:	loudmouth-devel >= 1.0.4}
+%{?with_telepathy:BuildRequires:	telepathy-glib-devel}
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	xorg-lib-libXScrnSaver-devel
 Requires(post,preun):	GConf2 >= 2.16.0
@@ -63,7 +67,8 @@ jak to tylko możliwe.
 	--disable-scrollkeeper \
 	--enable-aspell \
 	--enable-dbus \
-	--enable-galago \
+	%{!?with_telepathy:--enable-galago} \
+	%{?with_telepathy:--enable-telepathy} \
 	--enable-libnotify
 %{__make}
 
