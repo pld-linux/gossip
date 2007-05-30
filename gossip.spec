@@ -23,7 +23,7 @@ BuildRequires:	gnutls-devel >= 1.2.5
 BuildRequires:	gtk+2-devel >= 2:2.10.7
 BuildRequires:	intltool >= 0.35.0
 BuildRequires:	iso-codes
-%{!?with_telepathy:BuildRequires:	libgalago-devel >= 0.5.1}
+BuildRequires:	libgalago-devel >= 0.5.1
 BuildRequires:	libglade2-devel >= 1:2.6.0
 BuildRequires:	libgnomeui-devel >= 2.16.1
 BuildRequires:	libnotify-devel >= 0.4.2
@@ -67,7 +67,7 @@ jak to tylko możliwe.
 	--disable-scrollkeeper \
 	--enable-aspell \
 	--enable-dbus \
-	%{!?with_telepathy:--enable-galago} \
+	--enable-galago \
 	%{?with_telepathy:--enable-telepathy} \
 	--enable-libnotify
 %{__make}
