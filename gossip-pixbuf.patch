@@ -1,0 +1,31 @@
+--- trunk/libgossip/gossip-avatar.c	2007/05/29 17:43:58	2423
++++ trunk/libgossip/gossip-avatar.c	2007/05/29 22:01:22	2424
+@@ -221,6 +221,8 @@
+ GdkPixbuf *
+ gossip_avatar_get_pixbuf (GossipAvatar *avatar)
+ {
++	g_return_val_if_fail (avatar != NULL, NULL);
++
+ 	if (!avatar->pixbuf) {
+ 		avatar->pixbuf = avatar_create_pixbuf (avatar, AVATAR_SIZE);
+ 	}
+--- trunk/src/gossip-notify.c	2007/05/29 17:43:58	2423
++++ trunk/src/gossip-notify.c	2007/05/29 22:01:22	2424
+@@ -217,7 +217,7 @@
+ 			       &show_avatars);
+ 
+ 	if (show_avatars) {
+-		pixbuf = gossip_avatar_get_pixbuf (gossip_contact_get_avatar (contact));
++		pixbuf = gossip_contact_get_avatar_pixbuf (contact);
+ 	}
+ 
+ 	if (pixbuf) {
+@@ -322,7 +322,7 @@
+ 			      &show_avatars);
+ 
+ 	if (show_avatars) {
+-		pixbuf = gossip_avatar_get_pixbuf (gossip_contact_get_avatar (contact));
++		pixbuf = gossip_contact_get_avatar_pixbuf (contact);
+ 	}
+ 
+ 	if (pixbuf) {
