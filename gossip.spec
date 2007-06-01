@@ -1,5 +1,6 @@
 #
-%bcond_with	telepathy # Build with libtelepathy
+# Conditional build:
+%bcond_with	telepathy	# build with libtelepathy
 #
 Summary:	Very easy to use GNOME Jabber client
 Summary(pl.UTF-8):	Bardzo prosty w użyciu klient Jabbera dla GNOME
@@ -28,7 +29,7 @@ BuildRequires:	libgnomeui-devel >= 2.16.1
 BuildRequires:	libnotify-devel >= 0.4.2
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 1:2.6.27
-%{?!with_telepathy:BuildRequires:	loudmouth-devel >= 1.0.4}
+%{!?with_telepathy:BuildRequires:	loudmouth-devel >= 1.0.4}
 %{?with_telepathy:BuildRequires:	telepathy-glib-devel}
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	xorg-lib-libXScrnSaver-devel
