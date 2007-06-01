@@ -11,6 +11,7 @@ Group:		Applications/Communications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gossip/%{version}/%{name}-%{version}.tar.bz2
 # Source0-md5:	cb6d6b67e714009270e74e0acc055a54
 Patch0:	%{name}-galago-fix.spec
+Patch1:	%{name}-pixbuf.patch
 URL:		http://gossip.imendio.org/
 BuildRequires:	aspell-devel
 BuildRequires:	autoconf
@@ -53,6 +54,7 @@ jak to tylko możliwe.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %{__glib_gettextize}
