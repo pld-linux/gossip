@@ -5,12 +5,12 @@
 Summary:	Very easy to use GNOME Jabber client
 Summary(pl.UTF-8):	Bardzo prosty w użyciu klient Jabbera dla GNOME
 Name:		gossip
-Version:	0.26
-Release:	2
+Version:	0.28
+Release:	1
 License:	GPL
 Group:		Applications/Communications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gossip/%{version}/%{name}-%{version}.tar.bz2
-# Source0-md5:	b625bd0fb56ceb6da758be2164ff45dd
+# Source0-md5:	2c364a3fffec0fb57c71b6dbab6fa53a
 URL:		http://gossip.imendio.org/
 BuildRequires:	aspell-devel
 BuildRequires:	autoconf
@@ -109,6 +109,5 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/sounds/gossip
 %{_desktopdir}/*.desktop
 %{_iconsdir}/hicolor/*/apps/*
-%{_omf_dest_dir}/%{name}
 %{_sysconfdir}/gconf/schemas/gossip.schemas
 %{_sysconfdir}/sound/events/*
