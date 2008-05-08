@@ -5,12 +5,12 @@
 Summary:	Very easy to use GNOME Jabber client
 Summary(pl.UTF-8):	Bardzo prosty w użyciu klient Jabbera dla GNOME
 Name:		gossip
-Version:	0.28
+Version:	0.29
 Release:	1
 License:	GPL
 Group:		Applications/Communications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gossip/%{version}/%{name}-%{version}.tar.bz2
-# Source0-md5:	2c364a3fffec0fb57c71b6dbab6fa53a
+# Source0-md5:	03c0895cde92f9fdd8cc96abdea9ee68
 URL:		http://gossip.imendio.org/
 BuildRequires:	aspell-devel
 BuildRequires:	autoconf
@@ -29,7 +29,7 @@ BuildRequires:	libgnomeui-devel >= 2.16.1
 BuildRequires:	libnotify-devel >= 0.4.2
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 1:2.6.27
-%{!?with_telepathy:BuildRequires:	loudmouth-devel >= 1.0.4}
+%{!?with_telepathy:BuildRequires:	loudmouth-devel >= 1.3.4}
 %{?with_telepathy:BuildRequires:	telepathy-glib-devel}
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	xorg-lib-libXScrnSaver-devel
