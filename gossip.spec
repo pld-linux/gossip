@@ -1,7 +1,4 @@
 #
-# Conditional build:
-%bcond_with	telepathy	# build with libtelepathy
-#
 Summary:	Very easy to use GNOME Jabber client
 Summary(pl.UTF-8):	Bardzo prosty w użyciu klient Jabbera dla GNOME
 Name:		gossip
@@ -29,8 +26,7 @@ BuildRequires:	libgnomeui-devel >= 2.16.1
 BuildRequires:	libnotify-devel >= 0.4.2
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 1:2.6.27
-%{!?with_telepathy:BuildRequires:	loudmouth-devel >= 1.3.4}
-%{?with_telepathy:BuildRequires:	telepathy-glib-devel}
+BuildRequires:	loudmouth-devel >= 1.3.4
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	xorg-lib-libXScrnSaver-devel
 Requires(post,preun):	GConf2 >= 2.16.0
@@ -69,7 +65,6 @@ jak to tylko możliwe.
 	--enable-aspell \
 	--enable-dbus \
 	--enable-galago \
-	%{?with_telepathy:--enable-telepathy} \
 	--enable-libnotify
 %{__make}
 
