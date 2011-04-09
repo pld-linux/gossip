@@ -1,0 +1,124 @@
+diff -uNr gossip-0.31.bak/src/gossip-notify.c gossip-0.31/src/gossip-notify.c
+--- gossip-0.31.bak/src/gossip-notify.c	2008-06-22 01:16:27.000000000 +0200
++++ gossip-0.31/src/gossip-notify.c	2011-04-09 22:44:37.955968968 +0200
+@@ -225,7 +225,11 @@
+ 					gossip_contact_get_name (contact),
+ 					notify_get_default_status_from_presence (presence));
+ 
++#if !defined(NOTIFY_VERSION_MINOR) || (NOTIFY_VERSION_MAJOR == 0 && NOTIFY_VERSION_MINOR < 7)
+ 	notify = notify_notification_new (_("Contact Online"), body, NULL, NULL);
++#else
++	notify = notify_notification_new (_("Contact Online"), body, NULL);
++#endif
+ 	notify_notification_set_urgency (notify, NOTIFY_URGENCY_LOW);
+ 	notify_notification_set_icon_from_pixbuf (notify, pixbuf);
+ 
+@@ -234,9 +238,11 @@
+ 			  G_CALLBACK (notify_closed_cb),
+ 			  NULL);
+ 
++#if !defined(NOTIFY_VERSION_MINOR) || (NOTIFY_VERSION_MAJOR == 0 && NOTIFY_VERSION_MINOR < 7)
+ 	if (attach_status_icon) {
+ 		notify_notification_attach_to_status_icon (notify, attach_status_icon);
+ 	}
++#endif
+ 
+ 	notify_notification_add_action (notify, "default", _("Default"),
+ 					(NotifyActionCallback) notify_online_action_cb,
+@@ -328,15 +334,23 @@
+ 						     GTK_ICON_SIZE_MENU);
+ 	}
+ 
++#if !defined(NOTIFY_VERSION_MINOR) || (NOTIFY_VERSION_MAJOR == 0 && NOTIFY_VERSION_MINOR < 7)
+ 	notify = notify_notification_new (_("Subscription Request"),
+ 					  message,
+ 					  NULL,
+ 					  NULL);
++#else
++	notify = notify_notification_new (_("Subscription Request"),
++					  message,
++					  NULL);
++#endif
+ 	g_free (message);
+ 
++#if !defined(NOTIFY_VERSION_MINOR) || (NOTIFY_VERSION_MAJOR == 0 && NOTIFY_VERSION_MINOR < 7)
+ 	if (attach_status_icon) {
+ 		notify_notification_attach_to_status_icon (notify, attach_status_icon);
+ 	}
++#endif
+ 
+ 	notify_notification_set_urgency (notify, NOTIFY_URGENCY_NORMAL);
+ 	notify_notification_set_timeout (notify, NOTIFY_SUBSCRIPTION_TIME);
+@@ -375,16 +389,24 @@
+ 	notification_body = g_markup_printf_escaped (_("%s would like to send you “%s”"),
+ 						     gossip_contact_get_name (gossip_ft_get_contact (ft)),
+ 						     gossip_ft_get_file_name (ft));
++#if !defined(NOTIFY_VERSION_MINOR) || (NOTIFY_VERSION_MAJOR == 0 && NOTIFY_VERSION_MINOR < 7)
+ 	notification = notify_notification_new (_("File Transfer"),
+ 					  	notification_body,
+ 					  	NULL,
+ 					  	NULL);
++#else
++	notification = notify_notification_new (_("File Transfer"),
++					  	notification_body,
++					  	NULL);
++#endif
+ 
+ 	g_free (notification_body);
+ 	
++#if !defined(NOTIFY_VERSION_MINOR) || (NOTIFY_VERSION_MAJOR == 0 && NOTIFY_VERSION_MINOR < 7)
+ 	if (attach_status_icon) {
+ 		notify_notification_attach_to_status_icon (notification, attach_status_icon);
+ 	}
++#endif
+ 
+ 	notify_notification_set_urgency (notification, NOTIFY_URGENCY_NORMAL);
+ 
+@@ -546,7 +568,11 @@
+ 		str = g_markup_printf_escaped (_("“%s”"), body_stripped);
+ 	}
+ 
++#if !defined(NOTIFY_VERSION_MINOR) || (NOTIFY_VERSION_MAJOR == 0 && NOTIFY_VERSION_MINOR < 7)
+ 	notify = notify_notification_new (title, str, NULL, NULL);
++#else
++	notify = notify_notification_new (title, str, NULL);
++#endif
+ 	notify_notification_set_urgency (notify, NOTIFY_URGENCY_NORMAL);
+ 	notify_notification_set_icon_from_pixbuf (notify, pixbuf);
+ 	notify_notification_set_timeout (notify, NOTIFY_MESSAGE_TIME);
+@@ -556,9 +582,11 @@
+ 			  G_CALLBACK (notify_closed_cb),
+ 			  NULL);
+ 
++#if !defined(NOTIFY_VERSION_MINOR) || (NOTIFY_VERSION_MAJOR == 0 && NOTIFY_VERSION_MINOR < 7)
+ 	if (attach_status_icon) {
+ 		notify_notification_attach_to_status_icon (notify, attach_status_icon);
+ 	}
++#endif
+ 
+ 	notify_notification_add_action (notify, "default", _("Default"),
+ 					(NotifyActionCallback) notify_new_message_default_cb,
+@@ -901,7 +929,11 @@
+ 		return FALSE;
+ 	}
+ 
++#if !defined(NOTIFY_VERSION_MINOR) || (NOTIFY_VERSION_MAJOR == 0 && NOTIFY_VERSION_MINOR < 7)
+ 	notify = notify_notification_new (summary, message, NULL, NULL);
++#else
++	notify = notify_notification_new (summary, message, NULL);
++#endif
+ 	g_object_set_data_full (G_OBJECT (notify), "conf_path", g_strdup (conf_path), g_free);
+ 	g_object_set_data (G_OBJECT (notify), "func", func);
+ 	g_signal_connect (notify,
+@@ -909,9 +941,11 @@
+ 			  G_CALLBACK (notify_hint_closed_cb),
+ 			  user_data);
+ 
++#if !defined(NOTIFY_VERSION_MINOR) || (NOTIFY_VERSION_MAJOR == 0 && NOTIFY_VERSION_MINOR < 7)
+ 	if (attach_status_icon) {
+ 		notify_notification_attach_to_status_icon (notify, attach_status_icon);
+ 	}
++#endif
+ 
+ 	if (!notify_notification_show (notify, &error)) {
+ 		g_warning ("Failed to send notification: %s",

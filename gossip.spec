@@ -3,11 +3,12 @@ Summary:	Very easy to use GNOME Jabber client
 Summary(pl.UTF-8):	Bardzo prosty w użyciu klient Jabbera dla GNOME
 Name:		gossip
 Version:	0.31
-Release:	4
+Release:	5
 License:	GPL
 Group:		Applications/Communications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gossip/%{version}/%{name}-%{version}.tar.bz2
 # Source0-md5:	feacf7a78ced249268898d2a3f7063cd
+Patch0:		%{name}-libnotify.patch
 URL:		http://live.gnome.org/Gossip/
 BuildRequires:	aspell-devel
 BuildRequires:	autoconf
@@ -23,10 +24,11 @@ BuildRequires:	iso-codes
 BuildRequires:	libgalago-devel >= 0.5.1
 BuildRequires:	libglade2-devel >= 1:2.6.0
 BuildRequires:	libgnomeui-devel >= 2.16.1
-BuildRequires:	libnotify-devel >= 0.4.2
+BuildRequires:	libnotify-devel >= 0.7.0
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 1:2.6.27
 BuildRequires:	loudmouth-devel >= 1.3.4
+BuildRequires:	pkgconfig >= 1:0.16
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	xorg-lib-libXScrnSaver-devel
 Requires(post,postun):	gtk-update-icon-cache
@@ -50,6 +52,7 @@ jak to tylko możliwe.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %{__glib_gettextize}
@@ -98,8 +101,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS CONTRIBUTORS ChangeLog NEWS README
 %attr(755,root,root) %{_bindir}/*
-%attr(755,root,root) %{_libdir}/*-applet
-%{_libdir}/bonobo/servers/*
 %{_datadir}/%{name}
 %{_datadir}/sounds/gossip
 %{_desktopdir}/*.desktop
