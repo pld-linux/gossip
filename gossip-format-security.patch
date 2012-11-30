@@ -1,0 +1,11 @@
+--- ./libloudermouth/lm-bs-transfer.c.org	2008-05-23 09:41:49.000000000 +0200
++++ ./libloudermouth/lm-bs-transfer.c	2012-11-30 23:21:47.221456706 +0100
+@@ -428,7 +428,7 @@ bs_transfer_error (LmBsTransfer *transfe
+ 
+ 	error = g_error_new (lm_error_quark (),
+ 			     LM_BS_TRANSFER_ERROR_UNABLE_TO_CONNECT,
+-			     error_msg);
++			     "%s", error_msg);
+ 	lm_bs_transfer_error (transfer, error);
+ 	g_error_free (error);
+ }

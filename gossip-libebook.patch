@@ -1,0 +1,11 @@
+--- ./libgossip/gossip-ebook.c.org	2008-05-08 09:48:16.000000000 +0200
++++ ./libgossip/gossip-ebook.c	2012-11-30 23:27:49.808241321 +0100
+@@ -25,7 +25,7 @@
+ 
+ #include <string.h>
+ 
+-#include <libebook/e-book.h>
++#include <libebook/libebook.h>
+ 
+ #include "gossip-avatar.h"
+ #include "gossip-debug.h"
